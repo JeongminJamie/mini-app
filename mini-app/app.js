@@ -7,11 +7,8 @@ dotenv.config();
 //Mongo DB connection
 const db = process.env.MONGOLAB_URI;
 mongoose
-  .connect(db, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-  })
-  .then(() => console.log(" e don connect"))
+  .connect(db, {})
+  .then(() => console.log("mongoose connected"))
   .catch((err) => console.log(err));
 
 app.set("view engine", "ejs");
