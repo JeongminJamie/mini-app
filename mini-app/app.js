@@ -1,17 +1,27 @@
 const express = require("express");
 const app = express();
-const PORT = 8080;
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config();
+
+//Mongo DB connection
+const db = process.env.MONGOLAB_URI;
+mongoose
+  .connect(db, { useUnifiedTopology: true, useNewUrlParser: true })
+  .then(() => console.log(" e don connect"))
+  .catch((err) => console.log(err));
 
 app.set("view engine", "ejs");
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
 
 //Routes
 app.use("/", require("./routes.login"));
 
-const urlDatabase = {
-  b2xVn2: "http://www.lighthouselabs.ca",
-  "9sm5xK": "http://www.google.com",
-};
+//fake Database
+// const urlDatabase = {
+//   b2xVn2: "http://www.lighthouselabs.ca",
+//   "9sm5xK": "http://www.google.com",
+// };
 
 app.get("/", (req, res) => {
   res.send("Hello Jeongmin");
@@ -19,7 +29,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/urls.json", (req, res) => {
-  res.send(urlDatabase);
+  res.status(200);
 });
 
 app.get("/hello", (req, res) => {
@@ -35,6 +45,7 @@ app.get("/urls/:id", (req, res) => {
   res.send(`Hello ${id} This is your page when logged in`);
 });
 
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
