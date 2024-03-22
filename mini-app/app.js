@@ -7,7 +7,10 @@ dotenv.config();
 //Mongo DB connection
 const db = process.env.MONGOLAB_URI;
 mongoose
-  .connect(db, { useUnifiedTopology: true, useNewUrlParser: true })
+  .connect(db, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  })
   .then(() => console.log(" e don connect"))
   .catch((err) => console.log(err));
 
@@ -15,7 +18,7 @@ app.set("view engine", "ejs");
 // app.use(express.urlencoded({ extended: true }));
 
 //Routes
-app.use("/", require("./routes.login"));
+app.use("/", require("./routes/login"));
 
 //fake Database
 // const urlDatabase = {
@@ -25,7 +28,7 @@ app.use("/", require("./routes.login"));
 
 app.get("/", (req, res) => {
   res.send("Hello Jeongmin");
-  console.log("able to get Hello sentence");
+  console.log("Successfully get the main page");
 });
 
 app.get("/urls.json", (req, res) => {

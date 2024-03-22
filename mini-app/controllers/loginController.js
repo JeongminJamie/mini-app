@@ -1,12 +1,12 @@
 const registerView = (req, res) => {
-  res.render("register", {});
+  res.render("../views/login", {});
+};
 
-  const loginView = (req, res) => {
-    res.render("login", {});
-  };
+const loginView = (req, res) => {
+  res.render("../views/login", {});
+};
 
-  module.exports = {
-    registerView,
-    loginView,
-  };
+module.exports = {
+  registerView,
+  loginView,
 };
