@@ -12,16 +12,10 @@ mongoose
   .catch((err) => console.log(err));
 
 app.set("view engine", "ejs");
-// app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 //Routes
 app.use("/", require("./routes/login"));
-
-//fake Database
-// const urlDatabase = {
-//   b2xVn2: "http://www.lighthouselabs.ca",
-//   "9sm5xK": "http://www.google.com",
-// };
 
 app.get("/", (req, res) => {
   res.send("Hello Jeongmin");
