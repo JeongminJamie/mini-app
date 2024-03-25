@@ -12,10 +12,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  location: {
-    type: String,
-    default: "New York",
-  },
+  // location: {
+  //   type: String,
+  //   default: "New York",
+  // },
   date: {
     type: Date,
     default: Date.now,
