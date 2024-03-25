@@ -1,12 +1,13 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
+LocalStrategy = require("passport-local").Strategy;
 
 //show register page
 const registerView = (req, res) => {
   res.render("register", {});
 };
 
-//sohw login page
+//show login page
 const loginView = (req, res) => {
   res.render("login", {});
 };
