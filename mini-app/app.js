@@ -1,8 +1,14 @@
+//setting up middleware and database
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
+
+//Authentication
+const passport = require("passport");
+const { loginCheck } = require("./auth/passport");
+loginCheck(passport);
 
 //Mongo DB connection
 const db = process.env.MONGOLAB_URI;
@@ -11,7 +17,10 @@ mongoose
   .then(() => console.log("Mongoose connected"))
   .catch((err) => console.log(err));
 
+// Set ejs files to show the views
 app.set("view engine", "ejs");
+
+//Body Parsing
 app.use(express.urlencoded({ extended: false }));
 
 //Route files
