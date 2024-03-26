@@ -23,6 +23,9 @@ app.set("view engine", "ejs");
 //Body Parsing
 app.use(express.urlencoded({ extended: false }));
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 //Route files
 const loginRoutes = require("./routes/login");
 const registerRoutes = require("./routes/register");

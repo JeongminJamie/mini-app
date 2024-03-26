@@ -2,7 +2,9 @@ const bcrypt = require("bcrypt");
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("../models/User");
 
-//Login check = Local Authentication
+//Login check = Local Authentication(put in the session)
+//It's only invoked when passport.authenticate() used in the authentication route(mostly in login route)
+//Also, this function is used in the index file, so it can be invoked properly
 const loginCheck = (passport) => {
   passport.use(
     new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
