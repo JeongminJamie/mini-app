@@ -1,6 +1,7 @@
 //setting up middleware and database
 const express = require("express");
 const app = express();
+const session = require("express-session");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -23,7 +24,18 @@ app.set("view engine", "ejs");
 //Body Parsing
 app.use(express.urlencoded({ extended: false }));
 
+//Always come before passport.session()
+app.use(
+  session({
+    secret: "Happy Coding",
+    resave: true,
+    cookie: { secure: true },
+    saveUninitialized: true,
+  })
+);
 app.use(passport.initialize());
+
+// change the 'user' value from the client cookie into the true deserialized 'user' object
 app.use(passport.session());
 
 //Route files

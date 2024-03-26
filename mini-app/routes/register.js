@@ -3,7 +3,7 @@ const {
   registerView,
   registerUser,
 } = require("../controllers/registerController");
-const router = express.router();
+const router = express.Router();
 
 //get register page
 router.get("/register", registerView);
