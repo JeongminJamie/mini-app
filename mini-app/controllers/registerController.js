@@ -3,7 +3,8 @@ const User = require("../models/User");
 
 //show register page
 const registerView = (req, res) => {
-  res.render("register", {});
+  res.render("../views/register", {});
+  console.log("Successfully load the register page");
 };
 
 //when register form submitted

@@ -33,6 +33,8 @@ app.use(
     saveUninitialized: true,
   })
 );
+
+//initialize passport
 app.use(passport.initialize());
 
 // change the 'user' value from the client cookie into the true deserialized 'user' object
