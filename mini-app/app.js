@@ -8,14 +8,19 @@ dotenv.config();
 const db = process.env.MONGOLAB_URI;
 mongoose
   .connect(db, {})
-  .then(() => console.log("mongoose connected"))
+  .then(() => console.log("Mongoose connected"))
   .catch((err) => console.log(err));
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 
-//Routes
-app.use("/", require("./routes/login"));
+//Route files
+const loginRoutes = require("./routes/login");
+const registerRoutes = require("./routes/register");
+
+//Use routes
+app.use("/register", registerRoutes);
+app.use("/login", loginRoutes);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
